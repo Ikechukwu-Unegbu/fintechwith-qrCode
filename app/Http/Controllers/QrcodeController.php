@@ -6,8 +6,11 @@ use App\Http\Requests\CreateQrcodeRequest;
 use App\Http\Requests\UpdateQrcodeRequest;
 use App\Repositories\QrcodeRepository;
 use App\Http\Controllers\AppBaseController;
+use App\Models\Qrcode as ModelsQrcode;
 use Illuminate\Http\Request;
 use Flash;
+use Auth;
+use LaravelQRCode\Facades\QRCode;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
@@ -56,12 +59,31 @@ class QrcodeController extends AppBaseController
     public function store(CreateQrcodeRequest $request)
     {
         $input = $request->all();
+        $randNo = sha1(time());
+        $file = 'qrcode/'.$randNo.'.png';
+        
+        $newQrCodes = QRCode::text("Message")
+        ->setSize(4)
+        ->setMargin(2)
+        ->setOutfile($file)
+        ->png();
 
-        $qrcode = $this->qrcodeRepository->create($input);
+        
 
-        Flash::success('Qrcode saved successfully.');
+        if($file){
+            $input['qrcode_path'] = $file;
 
-        return redirect(route('qrcodes.index'));
+            //save data to the database
+            $qrcode = $this->qrcodeRepository->create($input);
+            // ModelsQrcode::create($input);
+            Flash::success('Qrcode saved successfully');
+        }else{
+            Flash::error('Qrcode failed to save.');
+        }
+
+       
+
+        return redirect(route('qrcodes.show', ['qrcode'=>$qrcode]));
     }
 
     /**

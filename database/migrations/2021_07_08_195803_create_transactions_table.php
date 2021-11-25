@@ -21,6 +21,7 @@ class CreateTransactionsTable extends Migration
             $table->integer('qrcode_id')->nullable();
             $table->float('amount', 8,4);
             $table->string('status')->default();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
