@@ -11,23 +11,22 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
+//use Illuminate\Routing\Route;
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
-Route::resource('qrcodes', 'QrcodeController');
 
-Route::resource('roles', 'roleController');
+Route::group(['middleware'=>'auth'], function(){
 
-Route::resource('transactions', 'transactionController');
+    Route::resource('qrcodes', 'QrcodeController');
 
-Route::resource('users', 'UserController');
+    Route::resource('roles', 'roleController');
+    
+    Route::resource('transactions', 'transactionController');
+    
+    Route::resource('users', 'UserController');
+});
+
