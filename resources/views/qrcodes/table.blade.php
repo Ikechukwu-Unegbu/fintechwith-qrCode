@@ -27,6 +27,7 @@
                     inactive
                 @endif
             </td>
+                
                 <td>
                     {!! Form::open(['route' => ['qrcodes.destroy', $qrcode->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

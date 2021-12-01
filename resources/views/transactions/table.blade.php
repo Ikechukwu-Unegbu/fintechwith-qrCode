@@ -2,10 +2,9 @@
     <table class="table" id="transactions-table">
         <thead>
             <tr>
-                <th>User Id</th>
-        <th>Qrcode Owner Id</th>
+        
         <th>Payment Method</th>
-        <th>Qrcode Id</th>
+        
         <th>Amount</th>
         <th>Status</th>
                 <th colspan="3">Action</th>
@@ -14,10 +13,8 @@
         <tbody>
         @foreach($transactions as $transaction)
             <tr>
-                <td>{{ $transaction->user_id }}</td>
-            <td>{{ $transaction->qrcode_owner_id }}</td>
             <td>{{ $transaction->payment_method }}</td>
-            <td>{{ $transaction->qrcode_id }}</td>
+           
             <td>{{ $transaction->amount }}</td>
             <td>{{ $transaction->status }}</td>
                 <td>

@@ -1,21 +1,21 @@
 <div class="col-md-6">
+
+       <!-- Product Name Field -->
+    <h3 class="form-group">
+        {!! Form::label('product_name', 'Product Name:') !!}
+        <p>{{ $qrcode->product_name }}</p>
+    </h3>
         
+     <!-- Company Name Field -->
+     <h3 class="form-group">
+        {!! Form::label('company_name', 'Company Name:') !!}
+        <p>{{ $qrcode->company_name }}</p>
+    </h3>
+
     <!-- Website Field -->
     <div class="form-group">
         {!! Form::label('website', 'Website:') !!}
         <p>{{ $qrcode->website }}</p>
-    </div>
-
-    <!-- Company Name Field -->
-    <div class="form-group">
-        {!! Form::label('company_name', 'Company Name:') !!}
-        <p>{{ $qrcode->company_name }}</p>
-    </div>
-
-    <!-- Product Name Field -->
-    <div class="form-group">
-        {!! Form::label('product_name', 'Product Name:') !!}
-        <p>{{ $qrcode->product_name }}</p>
     </div>
 
     <!-- Product Url Field -->
@@ -61,7 +61,7 @@
     </div>
 
 </div>
-<div class="col-md-6">
+<div class="col-md-5 pull-right">
         <!-- Qrcode Path Field -->
     <div class="form-group">
         {!! Form::label('qrcode_path', 'Scan the QRCode to Pay.') !!}
