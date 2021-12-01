@@ -66,5 +66,11 @@ class transaction extends Model
         'status' => 'required'
     ];
 
+    public function qrcode(){
+        return $this->belongsTo('App\Models\Qrcode');
+    }
     
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
 }

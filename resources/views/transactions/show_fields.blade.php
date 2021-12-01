@@ -1,7 +1,14 @@
+<!-- Qrcode Id Field -->
+<div class="form-group">
+    {!! Form::label('qrcode_id', 'Product Name:') !!}
+    <a href="{{ route('qrcodes.show', [$transaction->qrcode['id']]) }}" class='text-info'>
+    <h3>{{ $transaction->qrcode['product_name'] }}</h3>
+    </a>
+</div>
 <!-- User Id Field -->
 <div class="form-group">
-    {!! Form::label('user_id', 'Buyer Id:') !!}
-    <p>{{ $transaction->user_id }}</p>
+    {!! Form::label('user_id', 'Buyer Name:') !!}
+    <p>{{ $transaction->user['name'] }} | {{ $transaction->user['email'] }}</p>
 </div>
 
 <!-- Qrcode Owner Id Field -->
@@ -16,11 +23,6 @@
     <p>{{ $transaction->payment_method }}</p>
 </div>
 
-<!-- Qrcode Id Field -->
-<div class="form-group">
-    {!! Form::label('qrcode_id', 'Product Name:') !!}
-    <p>{{ $transaction->qrcode_id }}</p>
-</div>
 
 <!-- Amount Field -->
 <div class="form-group">
