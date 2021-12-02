@@ -5,10 +5,24 @@
 </div>
 
 <!-- Role Id Field -->
+@if(Auth::user()->role_id <3)
 <div class="form-group col-sm-6">
-    {!! Form::label('role_id', 'Role Id:') !!}
+    {!! Form::label('role_id', 'Access Level:') !!}
     {!! Form::text('role_id', null, ['class' => 'form-control']) !!}
 </div>
+<div class="dropdown col-sm-6">
+  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    Access Levels
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+  <option value="{{$user->role['id']}}">{{$user->role['name']}}</option>
+    @foreach($roles as $role)
+        <option value="{{$role['id']}}">{{$role['name']}}</option>
+    @endforeach  
+  </ul>
+</div>
+@endif
 
 <!-- Email Field -->
 <div class="form-group col-sm-6">
@@ -22,11 +36,6 @@
     {!! Form::password('password', ['class' => 'form-control']) !!}
 </div>
 
-<!-- Remember Token Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('remember_token', 'Remember Token:') !!}
-    {!! Form::text('remember_token', null, ['class' => 'form-control']) !!}
-</div>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

@@ -3,7 +3,7 @@
         <thead>
             <tr>
                 <th>Name</th>
-                <th>Role Id</th>
+                <th>User Acess</th>
                 <th>Email</th>
                 <th colspan="3">Action</th>
             </tr>
@@ -17,8 +17,9 @@
                     </a>
                    
                 </td>
-                <td>{{ $user->role_id }}</td>
+                <td>{{ $user->role['name'] }}</td>
                 <td>{{ $user->email }}</td>
+            @if(Auth::user()->role_id <3)
                 <td>
                     {!! Form::open(['route' => ['users.destroy', $user->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -28,6 +29,7 @@
                     </div>
                     {!! Form::close() !!}
                 </td>
+            @endif
             </tr>
         @endforeach
         </tbody>

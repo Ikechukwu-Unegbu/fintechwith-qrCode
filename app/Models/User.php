@@ -66,5 +66,9 @@ class User extends Model
 
     public function transactions(){
         return $this->hasMany('App\Models\transaction'); 
-    }    
+    } 
+    
+    public function role(){
+        return $this->belongsTo('App\Models\role');
+    }
 }
