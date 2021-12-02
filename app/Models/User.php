@@ -65,6 +65,6 @@ class User extends Model
     ];
 
     public function transactions(){
-        return $this->hasMany('App\Models\transaction');
+        return $this->hasMany('App\Models\transaction'); 
     }    
 }
