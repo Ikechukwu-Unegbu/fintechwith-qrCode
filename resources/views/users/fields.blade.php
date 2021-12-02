@@ -6,10 +6,6 @@
 
 <!-- Role Id Field -->
 @if(Auth::user()->role_id <3)
-<div class="form-group col-sm-6">
-    {!! Form::label('role_id', 'Access Level:') !!}
-    {!! Form::text('role_id', null, ['class' => 'form-control']) !!}
-</div>
 <div class="dropdown col-sm-6">
   <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
     Access Levels

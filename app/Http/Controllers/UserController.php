@@ -11,6 +11,7 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 use App\Models\role;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends AppBaseController
 {
@@ -125,6 +126,10 @@ class UserController extends AppBaseController
             Flash::error('User not found');
 
             return redirect(route('users.index'));
+        }
+        $input = $request->all();
+        if(!empty($input['password'])){
+            $input['password'] = Hash::make($input['password']);
         }
 
         $user = $this->userRepository->update($request->all(), $id);
